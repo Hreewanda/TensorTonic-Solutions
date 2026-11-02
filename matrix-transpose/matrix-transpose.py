@@ -1,9 +1,10 @@
 import numpy as np
 
-def matrix_transpose(A):
+def matrix_transpose(A: list) -> np.ndarray:
     """
-    Return the transpose of matrix A (swap rows and columns).
+    Returns the transposed matrix as a NumPy array.
     """
     # Write code here
     A = np.array(A)
     return np.transpose(A)
+    pass
