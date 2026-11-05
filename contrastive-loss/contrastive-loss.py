@@ -1,19 +1,15 @@
 import numpy as np
 
-def contrastive_loss(a, b, y, margin=1.0, reduction="mean") -> float:
+def contrastive_loss(a: list, b: list, y: list, margin: float = 1.0, reduction: str = "mean") -> float:
     """
-    a, b: arrays of shape (N, D) or (D,)  (will broadcast to (N,D))
-    y:    array of shape (N,) with values in {0,1}; 1=similar, 0=dissimilar
-    margin: float > 0
-    reduction: "mean" (default) or "sum"
-    Return: float
+    Returns the loss as a float.
     """
     # Write code here
-    a = np.asarray(a, dtype=float)
-    b = np.asarray(b, dtype=float)
-    y = np.asarray(y, dtype=float).reshape(-1)
-    if a.ndim ==1:
-        a = a.reshape(1, -1)
+    a = np.asarray(a, dtype = float)
+    b = np.asarray(b, dtype = float)
+    y = np.asarray(y, dtype = float).reshape(-1)
+    if a.ndim == 1:
+        a = a.reshape(1,-1) 
     if b.ndim == 1:
         b = b.reshape(1, -1)
     d = np.linalg.norm(a-b, axis = 1)
@@ -22,3 +18,4 @@ def contrastive_loss(a, b, y, margin=1.0, reduction="mean") -> float:
         return float(np.mean(loss)) 
     elif reduction == "sum":
         return float(np.sum(loss))
+    pass
